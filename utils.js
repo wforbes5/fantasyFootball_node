@@ -5,7 +5,7 @@
  * @param {Array[Array]} table - The title of the book.
  *
  */
-function nestedArrayToJsonArray(table) {
+function nestedToJsonArray(table) {
     let res = []
     for (let column = 0; column < table.length; column++) {
         let workingHeader = table[column][0];
@@ -29,6 +29,34 @@ function nestedArrayToJsonArray(table) {
         }      
     }
       return res;
-}
+};
 
-module.export
+
+
+/**
+ * function takes array of json and returns array with all keys converted
+ * @constructor
+ * @param {Array[JSON]} results - The title of the book.
+ *
+ */
+
+function convertJsonArrayTypes(results) {
+  try {
+  results.forEach((result) => {
+  Object.keys(result).forEach((key) => {
+      let k = result[key];
+      if (k.includes('%')) {
+        result[key] = parseFloat(k.replace('%', ''))
+      } else if (parseInt(k)) {
+        result[key] = parseInt(k)
+      }
+    });
+  })
+  } catch (err) {
+    console.log(err)
+  }
+  return results
+};
+
+module.exports.nestedToJsonArray = nestedToJsonArray;
+module.exports.convertJsonArrayTypes = convertJsonArrayTypes;
