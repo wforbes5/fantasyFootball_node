@@ -59,8 +59,5 @@ typings/
 
 # next.js build output
 .next
-<<<<<<< HEAD
 
 node/config/sequelize_config.json
-=======
->>>>>>> 2a3e15ddea6c741773d2b14ebb01304a28946c42
